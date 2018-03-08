@@ -1,0 +1,7 @@
+src/test/resources/wsd-app-vwd-env.properties
+src/test/resources/wsd-app-six-env.properties
+target/
+.settings
+.classpath
+.project
+

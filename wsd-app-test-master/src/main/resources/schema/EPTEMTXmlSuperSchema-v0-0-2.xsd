@@ -1,0 +1,558 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="0.9" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:include schemaLocation="common-xsd-types-v0-0-2.xsd"/>
+	<xs:element name="priipList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="priip" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="globalIdentifier" minOccurs="1" maxOccurs="1"/>
+							<xs:element type="productSources" name="productSource" minOccurs="0" maxOccurs="1"/>
+							<xs:element type="productTypes" name="productType" minOccurs="1" maxOccurs="1"/>
+							<xs:element type="xs:string" name="highLevelPayoffName" minOccurs="0" maxOccurs="1"/> <!--enum to come -->
+							<xs:element type="xs:string" name="lowLevelPayoffName" minOccurs="0" maxOccurs="1"/> <!--enum to come -->
+							<xs:element type="MICs" name="MICs" minOccurs="0" maxOccurs="1"/>
+							<xs:element type="kid" name="kid" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="priipData" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:dateTime" name="startDate" minOccurs="0" maxOccurs="1"/>
+										<xs:element type="userPopulations" name="accessControls" minOccurs="0" maxOccurs="1"/>
+										<xs:element name="general" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:string" name="manufacturerName" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_00010_Portfolio_Issuer_Name" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_00020_Portfolio_Guarantor_Name" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_00030_Portfolio_Identifying_Data" minOccurs="1" maxOccurs="unbounded"/>
+													<xs:element type="codeTypes" name="_00040_Type_Of_Identification_Code_For_The_Fund_Share_Or_Portfolio" minOccurs="1" maxOccurs="unbounded"/>
+													<xs:element type="xs:string" name="_00050_Portfolio_Name" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="currencies" name="_00060_Share_Class_Currency" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:date" name="_00070_Reference_Date" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="priipCategories" name="_00080_Portfolio_PRIIPS_Category" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_00090_Fund_CIC_code" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="yesNo" name="_00100_EOS_portfolio" minOccurs="0" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="risk" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="valuationFrequencies" name="_01010_Valuation_Frequency" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_01020_Portfolio_VEV_Reference" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="yesNo" name="_01030_IS_Flexible" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_01040_Flex_VEV_Historical" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_01050_Flex_VEV_Ref_Asset_Allocation" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="yesNo" name="_01060_IS_Risk_Limit_Relevant" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_01070_Flex_VEV_Risk_Limit" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="yesNo" name="_01080_Existing_Credit_Risk" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="sriClasses" name="_01090_SRI" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="mrmClasses" name="_01100_MRM" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="crmClasses" name="_01110_CRM" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_01120_Recommended_Holding_Period" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:date" name="_01130_Maturity_Date" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="liquidityRiskTypes" name="_01140_Liquidity_Risk" minOccurs="1" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="performanceScenarios" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:float" name="_02090_Portfolio_return_favorable_scenario_RHP" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02070_Portfolio_return_favorable_scenario_1_year" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02080_Portfolio_return_favorable_scenario_half_RHP" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02060_Portfolio_return_moderate_scenario_RHP" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02040_Portfolio_return_moderate_scenario_1_year" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02050_Portfolio_return_moderate_scenario_half_RHP" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02030_Portfolio_return_unfavorable_scenario_RHP" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02010_Portfolio_return_unfavorable_scenario_1_year" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02020_Portfolio_return_unfavorable_scenario_half_RHP" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02120_Portfolio_return_stress_scenario_RHP" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02100_Portfolio_return_stress_scenario_1_year" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02110_Portfolio_return_stress_scenario_half_RHP" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02130_Portfolio_number_of_observed_return_M0" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02140_Portfolio_mean_observed_returns_M1" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02150_Portfolio_observed_Sigma" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02160_Portfolio_observed_Skewness" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02170_Portfolio_observed_Excess_Kurtosis" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_02180_Portfolio_observed_Stressed_Volatility" minOccurs="0" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="costs" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="generalCostFields" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:float" name="_03010_One-off_cost_Portfolio_entry_cost" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03015_One-off_cost_Portfolio_entry_cost_Acquired" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03020_One-off_costs_Portfolio_exit_cost_at_RHP" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03030_One-off_costs_Portfolio_exit_cost_at_1_year" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03040_One-off_costs_Portfolio_exit_cost_at_half_RHP" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="yesNo" name="_03050_One-off_costs_Portfolio_sliding_exit_cost_Indicator" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03060_Ongoing_costs_Portfolio_other_costs" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03070_Ongoing_costs_Portfolio_management_costs" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03080_Ongoing_costs_Portfolio_transaction_costs" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="yesNo" name="_03090_Existing_performance_fees" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03095_Incidental_costs_Portfolio_performance_fees" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="yesNo" name="_03100_Existing_carried_interest_fees" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03105_Incidental_costs_Portfolio_carried_interest" minOccurs="0" maxOccurs="1"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="costFieldsForStructuredProducts" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:float" name="_07010_Total_cost_1_year" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07020_RIY_1_year" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07030_Total_cost_half_RHP" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07040_RIY_half_RHP" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07050_Total_cost_RHP" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07060_RIY_RHP" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07070_One-off_costs_Portfolio_entry_cost_RIY" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07080_One-off_costs_Portfolio_exit_cost_RIY" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07090_Ongoing_costs_Portfolio_transaction_costs_RIY" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07100_Ongoing_costs_Other_ongoing_costs_RIY" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07110_Incidental_costs_Portfolio_performance_fees_RIY" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_07120_Incidental_costs_Portfolio_carried_interests_RIY" minOccurs="0" maxOccurs="1"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="additionalDataForUcits" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="yesNo" name="_05010_PRIIP_data_delivery" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="yesNo" name="_05020_UCITS_data_delivery" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="sriClasses" name="_05030_Portfolio_UCITS_SRRI" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_05040_Portfolio_UCITS_Vol" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_05050_Ongoing_costs_Portfolio_other_costs_UCITS" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_05060_Ongoing_costs_Portfolio_transaction_costs" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_05065_Transactions_costs_methodology" minOccurs="0" maxOccurs="1"/>											 
+													<xs:element type="xs:float" name="_05070_Incidental_costs_Portfolio_performance_fees_UCITS" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_05080_Incidental_costs_Portfolio_carried_interest_UCITS" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_05090_UCITS_KID_Web_Address" minOccurs="0" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="additionalDataForGermanCATIVPRIIPs_PIAModel" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="characteristicsOfTheFundOrPortfolio" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:float" name="_06010_Bonds_Weight" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_06020_Annualized_Return_Volatility" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_06030_Duration_Bonds" minOccurs="0" maxOccurs="1"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="additionalInformationForCapitalPreservationFundsOrPortfolio" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="yesNo" name="_06040_Existing_Capital_Preservation" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_06050_Capital_Preservation_Level" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="valuationFrequenciesPIA" name="_06060_Time_Interval_Maximum_Loss" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="yesNo" name="_06070_Uses_PI" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_06080_Multiplier_PI" minOccurs="0" maxOccurs="1"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="narratives" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>								   
+													<xs:element type="languagesEMT" name="_04010_Reference_Language" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="yesNo" name="_04020_Comprehension_Alert_Portfolio" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04030_Intended_target_market_retail_investor_Portfolio" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04040_Investment_objective_Portfolio" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04050_Risk_narrative_Portfolio" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04060_Other_materially_relevant_risk_narrative_Portfolio" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04070_Type_of_underlying_Investment_Option" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="yesNo" name="_04080_Capital_Guarantee" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_04081_Capital_Guarantee_Level" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04082_Capital_Guarantee_Limitations" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:date" name="_04083_Capital_Guarantee_Early_Exit_Conditions" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04084_Capital_guarantee_Portfolio" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_04085_Possible_maximum_loss_Portfolio" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04090_Portfolio_Performance_Fees_Narrative" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04100_Portolio_Carried_Interest_Narrative" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_04110_Other_comment" minOccurs="0" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="mifid2Data" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="userPopulations" name="accessControls" minOccurs="0" maxOccurs="1"/>
+										<xs:element type="changeLogmifid2" name="changeLog" minOccurs="1" maxOccurs="1"/>
+										<xs:element type="xs:dateTime" name="startDate" minOccurs="0" maxOccurs="1"/>
+										<xs:element name="generalPortfolioInformation" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:string" name="_00010_Financial_Instrument_Identifying_Data" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="codeTypes" name="_00020_Type_Of_Identification_Code_For_The_Financial_Instrument" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_00030_Financial_Instrument_Name" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="currencies" name="_00040_Financial_Instrument_Currency" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:date" name="_00050_Reporting_Date" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="financialInstrumentTypes" name="_00060_Financial_Instrument_Legal_Structure" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_00070_Financial_Instrument_Issuer_Name" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_00080_Financial_Instrument_Guarantor_Name" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:string" name="_00090_Product_Category_or_Nature" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="yesNo" name="_00100_Leveraged_Financial_Instrument_or_Contingent_Liability_Instrument" minOccurs="0" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="targetMarket" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="clientType" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="targetMarketOptions" name="_01010_Investor_Type_Retail" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="targetMarketOptionsProfessionalInvestors" name="_01020_Investor_Type_Professional" minOccurs="1" maxOccurs="1"/>	  
+																<xs:element type="targetMarketOptions" name="_01030_Investor_Type_Eligible_Counterparty" minOccurs="1" maxOccurs="1"/>	  
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="distributionStrategy" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="distributionStrategyOptions" name="_06010_Execution_Only" minOccurs="0" maxOccurs="1"/>					   
+																<xs:element type="distributionStrategyOptions" name="_06020_Execution_With_Appropriateness_Test_Or_Non_Advised_Services" minOccurs="0" maxOccurs="1" />					 
+																<xs:element type="distributionStrategyOptions" name="_06030_Investment_Advice" minOccurs="0" maxOccurs="1"/>						
+																<xs:element type="distributionStrategyOptions" name="_06040_Portfolio_Management" minOccurs="0" maxOccurs="1"/>					 
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="knowledgeAndExperience" minOccurs="1" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="targetMarketOptions" name="_02010_Basic_Investor" minOccurs="1" maxOccurs="1"/>					   
+																<xs:element type="targetMarketOptions" name="_02020_Informed_Investor" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="targetMarketOptions" name="_02030_Advanced_Investor" minOccurs="1" maxOccurs="1"/>						
+																<xs:element type="targetMarketOptions" name="_02040_Expert_Investor_Germany" minOccurs="0" maxOccurs="1"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="abilityToBearLosses" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="targetMarketOptions" name="_03010_No_Capital_Loss" minOccurs="1" maxOccurs="1"/>					  
+																<xs:element type="targetMarketOptions" name="_03020_Limited_Capital_Loss" minOccurs="1" maxOccurs="1"/>
+																<xs:element type="xs:float" name="_03030_Limited_Capital_Loss_Level" minOccurs="0" maxOccurs="1"/>
+																<xs:element type="targetMarketOptions" name="_03040_No_Capital_Guarantee" minOccurs="1" maxOccurs="1"/>					 
+																<xs:element type="targetMarketOptions" name="_03050_Loss_Beyond_Capital" minOccurs="1" maxOccurs="1"/>					  
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="riskTolerance" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="sriClasses" name="_04010_Risk_Tolerance_PRIIPS_Methodology" minOccurs="0" maxOccurs="1"/>					 
+																<xs:element type="srriClasses" name="_04020_Risk_Tolerance_UCITS_Metholodology" minOccurs="0" maxOccurs="1"/>					   
+																<xs:element type="riskToleranceOptions" name="_04030_Risk_Tolerance_Internal_Methodology_For_Non_PRIIPS_and_Non_UCITS" minOccurs="0" maxOccurs="3"/>	
+																<xs:element type="sriClassesSpanish" name="_04040_Risk_Tolerance_For_Non_PRIIPS_and_Non_UCITS_Spain" minOccurs="0" maxOccurs="1"/>					  
+																<xs:element type="targetMarketOptionsLim" name="_04050_Not_For_Investors_With_The_Lowest_Risk_Tolerance_Germany" minOccurs="0" maxOccurs="1"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="objectivesInvestmentHorizonAndNeeds" minOccurs="1" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="objectives" minOccurs="0" maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="targetMarketOptions" name="_05070_Return_Profile_Pension_Scheme_Germany" minOccurs="0" maxOccurs="1"/>																				
+																			<xs:element type="targetMarketOptions" name="_05010_Return_Profile_Preservation" minOccurs="1" maxOccurs="1"/>					  
+																			<xs:element type="targetMarketOptions" name="_05030_Return_Profile_Income" minOccurs="1" maxOccurs="1"/>						
+																			<xs:element type="targetMarketOptions" name="_05020_Return_Profile_Growth" minOccurs="1" maxOccurs="1"/>												
+																			<xs:element type="targetMarketOptions" name="_05040_Return_Profile_Hedging" minOccurs="1" maxOccurs="1"/>					   
+																			<xs:element type="targetMarketOptions" name="_05050_Option_or_Leveraged_Return_Profile" minOccurs="1" maxOccurs="1"/>					   
+																			<xs:element type="targetMarketOptionsLim" name="_05060_Return_Profile_Other" minOccurs="1" maxOccurs="1"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="investmentHorizon" minOccurs="1" maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>					   
+																			<xs:element type="xs:date" name="_05090_Maturity_Date" minOccurs="0" maxOccurs="1"/>						
+																			<xs:element type="targetMarketOptions" name="_05100_May_Be_Terminated_Early" minOccurs="0" maxOccurs="1"/>				  
+																			<xs:element type="timeHorizonOptions" name="_05080_Time_Horizon" minOccurs="0" maxOccurs="4" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element type="enum05110Needs" name="_05110_Specific_Investment_Need" minOccurs="0" maxOccurs="unbounded"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="mifid2CostsAndCharges" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="userPopulations" name="accessControls" minOccurs="0" maxOccurs="1"/>
+										<xs:element type="xs:dateTime" name="startDate" minOccurs="0" maxOccurs="1"/>
+										<xs:element name="costsAndChargesExAnte" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="tradingMethods" name="_07010_Structured_Securities_Quotation" minOccurs="0" maxOccurs="1"/>					   
+													<xs:element type="xs:float" name="_07020_One-off_cost_Financial_Instrument_entry_cost" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07030_One-off_cost_Financial_Instrument_maximum_entry_cost_fixed_amount_Italy" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07040_One-off_cost_Financial_Instrument_maximum_entry_cost_acquired" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07050_One-off_costs_Financial_Instrument_maximum_exit_cost" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07060_One-off_costs_Financial_Instrument_maximum_exit_cost_fixed_amount_Italy" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07070_One-off_costs_Financial_Instrument_maximum_exit_cost_acquired" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07080_One-off_costs_Financial_Instrument_Typical_exit_cost" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07090_One-off_cost_Financial_Instrument_exit_cost_structured_securities_prior_RHP" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07100_Financial_Instrument_Ongoing_costs" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07110_Financial_Instrument_Management_fee" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07120_Financial_Instrument_Distribution_fee" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07130_Financial_Instrument_Transaction_costs_ex_ante" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_07140_Financial_Instrument_Incidental_costs_ex_ante" minOccurs="1" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="costsAndChargesExPost" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:float" name="_08010_One-off_cost_Structured_Securities_entry_cost_ex_post" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_08020_One-off_costs_Structured_Securities_exit_cost_ex_post" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_08030_Financial_Instrument_Ongoing_costs_ex_post" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_08040_Structured_Securities_Ongoing_costs_ex_post_accumulated" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_08050_Financial_Instrument_Management_fee_ex_post" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_08060_Financial_Instrument_Distribution_fee_ex_post" minOccurs="0" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_08070_Financial_Instrument_Transaction_costs_ex_post" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:float" name="_08080_Financial_Instrument_Incidental_costs_ex_post" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:date" name="_08090_Beginning_Of_Calculation_Period" minOccurs="1" maxOccurs="1"/>
+													<xs:element type="xs:date" name="_08100_End_Of_Calculation_Period" minOccurs="0" maxOccurs="1"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Yes or No -->
+	<xs:simpleType name="yesNo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Identification code types -->
+
+	<xs:simpleType name="codeTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/> <!-- isin -->
+			<xs:enumeration value="2"/> <!-- cusip -->
+			<xs:enumeration value="3"/> <!-- sedol -->
+			<xs:enumeration value="4"/> <!-- wkn -->
+			<xs:enumeration value="5"/> <!-- ticker -->
+			<xs:enumeration value="6"/> <!-- other -->
+			<xs:enumeration value="7"/> <!-- ric -->
+			<xs:enumeration value="8"/> <!-- other -->
+			<xs:enumeration value="9"/> <!-- other -->
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Valuation frequencies -->
+
+	<xs:simpleType name="valuationFrequencies">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="104"/>
+			<xs:enumeration value="52"/>
+			<xs:enumeration value="252"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="24"/>		
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Valuation frequencies PIA-->
+
+	<xs:simpleType name="valuationFrequenciesPIA">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="104"/>
+			<xs:enumeration value="52"/>
+			<xs:enumeration value="252"/>
+			<xs:enumeration value="24"/>		
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Risk Tolerance -->
+
+	<xs:simpleType name="riskToleranceOptions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="L"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="H"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Time Horizon Options -->
+
+	<xs:simpleType name="timeHorizonOptions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="V"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="L"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- 05110 -->
+
+	<xs:simpleType name="enum05110Needs">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="G"/>
+			<xs:enumeration value="I"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="O"/>
+			<xs:enumeration value="E"/> 
+
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- CRM classes -->
+
+	<xs:simpleType name="crmClasses">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Liquidity Risk -->
+
+	<xs:simpleType name="liquidityRiskTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="I"/>
+			<xs:enumeration value="L"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Trading methods -->
+
+	<xs:simpleType name="tradingMethods">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="U"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Finalcial Instrument Types -->
+
+	<xs:simpleType name="financialInstrumentTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="SP"/>
+			<xs:enumeration value="U"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Target market options -->
+
+	<xs:simpleType name="targetMarketOptions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="Neutral"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Target market options Limited-->
+
+	<xs:simpleType name="targetMarketOptionsLim">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="Neutral"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Target market options for Professional Investors -->
+
+	<xs:simpleType name="targetMarketOptionsProfessionalInvestors">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="Neutral"/>
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="B"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Distribution strategy options -->
+
+	<xs:simpleType name="distributionStrategyOptions">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="R"/>
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Languages -->
+
+<xs:simpleType name="languagesEMT">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="BUL"/>
+		<xs:enumeration value="HRV"/>
+		<xs:enumeration value="CZE"/>
+		<xs:enumeration value="DAN"/>
+		<xs:enumeration value="DUT"/>
+		<xs:enumeration value="ENG"/>
+		<xs:enumeration value="FIN"/>
+		<xs:enumeration value="FRE"/>
+		<xs:enumeration value="GER"/>
+		<xs:enumeration value="HUN"/>
+		<xs:enumeration value="ITA"/>
+		<xs:enumeration value="LIT"/>
+		<xs:enumeration value="NOR"/>
+		<xs:enumeration value="POL"/>
+		<xs:enumeration value="POR"/>
+		<xs:enumeration value="RUM"/>
+		<xs:enumeration value="RUS"/>
+		<xs:enumeration value="SLO"/>
+		<xs:enumeration value="SPA"/>
+		<xs:enumeration value="SWE"/>
+	</xs:restriction>
+</xs:simpleType>
+</xs:schema>

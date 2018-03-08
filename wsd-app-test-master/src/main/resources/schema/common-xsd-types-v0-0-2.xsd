@@ -1,0 +1,532 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+<xs:complexType name="kid">
+        <xs:sequence>
+            <xs:element type="userPopulations" name="accessControls" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="generationMethods" name="generationMethod" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:dateTime" name="lastUpdated" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:dateTime" name="dateAndTimeAsOfWhichPRIIPDataIsCurrent" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:dateTime" name="dateAndTimeAsOfWhichPRIIPDataExpires" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:dateTime" name="startDate" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:boolean" name="showKidOnRegXchange" minOccurs="0" maxOccurs="1"/>          
+            <xs:element name="currentVersion" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="xs:dateTime" name="version" minOccurs="1" maxOccurs="1"/>
+                        <xs:element type="changeLog" name="changeLog" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="documents" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="document" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element type="xs:string" name="url" minOccurs="0" maxOccurs="1"/>
+                                                <xs:element type="languages" name="language" minOccurs="0" maxOccurs="1"/>
+                                                <xs:element type="jurisdictions" name="jurisdiction" minOccurs="0" maxOccurs="1"/>
+                                                <xs:element type="xs:string" name="UUID" minOccurs="0" maxOccurs="1"/>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="languages" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="languages" name="language" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="jurisdictions" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="jurisdictions" name="jurisdiction" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="priorVersions" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="priorVersion" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element type="xs:dateTime" name="version" minOccurs="0" maxOccurs="1"/>
+                                    <xs:element  type="changeLog" name="changeLog" minOccurs="1" maxOccurs="1"/>
+                                    <xs:element name="documents" minOccurs="0" maxOccurs="1">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="document" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                        <xs:sequence>
+                                                            <xs:element type="xs:string" name="url" minOccurs="0" maxOccurs="1"/>
+                                                            <xs:element type="languages" name="language" minOccurs="0" maxOccurs="1"/>
+                                                            <xs:element type="jurisdictions" name="jurisdiction" minOccurs="0" maxOccurs="1"/>
+                                                            <xs:element type="xs:string" name="UUID" minOccurs="0" maxOccurs="1"/>
+                                                        </xs:sequence>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+</xs:complexType>
+
+
+
+
+<!-- User populations -->
+    
+<xs:complexType name="userPopulations">
+    <xs:sequence>
+        <xs:element type="informationSharingTemplateTypes" name="informationSharingTemplate" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="modifiers" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="modifier" minOccurs="1" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element type="modifierTypes" name="modifier" minOccurs="1" maxOccurs="1"/>
+                                <xs:element type="xs:string" name="organization" minOccurs="0" maxOccurs="1"/>
+								<xs:element type="xs:string" name="LEI" minOccurs="0" maxOccurs="1"/> 
+                                <xs:element type="xs:string" name="desk" minOccurs="0" maxOccurs="1"/>
+                                <xs:element type="xs:string" name="user" minOccurs="0" maxOccurs="1"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Information sharing template types -->
+
+<xs:simpleType name="informationSharingTemplateTypes">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="public"/>
+        <xs:enumeration value="restricted"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Modifier types -->
+<xs:simpleType name="modifierTypes">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="exclude"/>
+        <xs:enumeration value="include"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Jurisdictions -->
+    
+<xs:simpleType name="jurisdictions">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="AT"/>
+        <xs:enumeration value="BE"/>
+        <xs:enumeration value="BG"/>
+        <xs:enumeration value="CA"/>
+        <xs:enumeration value="CZ"/>
+        <xs:enumeration value="DK"/>
+        <xs:enumeration value="FI"/>
+        <xs:enumeration value="FR"/>
+        <xs:enumeration value="DE"/>
+        <xs:enumeration value="ES"/>
+        <xs:enumeration value="GR"/>
+        <xs:enumeration value="HR"/>
+        <xs:enumeration value="HU"/>
+        <xs:enumeration value="IT"/>
+        <xs:enumeration value="IE"/>
+        <xs:enumeration value="LT"/>
+        <xs:enumeration value="LU"/>
+        <xs:enumeration value="NO"/>
+        <xs:enumeration value="NL"/>
+        <xs:enumeration value="other"/>
+        <xs:enumeration value="PL"/>
+        <xs:enumeration value="PT"/>
+        <xs:enumeration value="RO"/>
+        <xs:enumeration value="RU"/>
+        <xs:enumeration value="SK"/>
+        <xs:enumeration value="SE"/>
+        <xs:enumeration value="CH"/>
+        <xs:enumeration value="GB"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- KID generation methods -->
+
+<xs:simpleType name="generationMethods">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="onTheFly"/>
+        <xs:enumeration value="cached"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- KID update triggers level 1 -->
+
+<xs:simpleType name="kidUpdateTriggersLevel1">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="lifeCycleEvent"/>
+        <xs:enumeration value="productDescriptionChange"/>
+        <xs:enumeration value="intendedRetailInvestorChange"/>
+        <xs:enumeration value="referenceAssetChange"/>
+        <xs:enumeration value="riskChange"/>
+    </xs:restriction>
+</xs:simpleType>
+        
+<!-- KID update triggers level 2 -->
+
+<xs:simpleType name="kidUpdateTriggersLevel2">
+    <xs:restriction base="xs:string">
+    
+        <!-- Category: lifeCycleEvent -->
+    
+        <xs:enumeration value="initialPublication"/>
+        <xs:enumeration value="autoCall"/>
+        <xs:enumeration value="issuerCall"/>
+        <xs:enumeration value="investorPut"/>
+        <xs:enumeration value="redemptionAtMaturity"/>
+        <xs:enumeration value="cancellation"/>
+        <xs:enumeration value="otherTermination"/>
+
+        <!-- Category: productDescriptionChange -->
+
+        <xs:enumeration value="knockInBarrierBreach"/>
+        <xs:enumeration value="knockOutBarrierBreach"/>
+        <xs:enumeration value="interestIssuerSwitch"/>
+        <xs:enumeration value="interestAutoSwitch"/>
+        <xs:enumeration value="otherPayoffChange"/>
+        <xs:enumeration value="otherProductDescriptionChange"/>
+        
+        <!-- Category: intendedRetailInvestorChange -->
+        
+        <xs:enumeration value="intendedRetailInvestorChange"/>
+        
+        <!-- Category: referenceAssetChange -->
+
+        <xs:enumeration value="stockSplit"/>
+        <xs:enumeration value="tickerChange"/>
+        <xs:enumeration value="merger"/>
+        <xs:enumeration value="spinOff"/>
+        <xs:enumeration value="otherCorporateAction"/>
+        <xs:enumeration value="creditEvent"/>
+        
+        <!-- Category: riskChange -->
+
+        <xs:enumeration value="creditRatingChange"/>
+        <xs:enumeration value="crmChange"/>
+        <xs:enumeration value="mrmChange"/>
+        <xs:enumeration value="sriChange"/>
+        <xs:enumeration value="scenarioChange"/>
+        <xs:enumeration value="otherRiskChange"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Languages -->
+
+<xs:simpleType name="languages">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="BG"/>
+        <xs:enumeration value="HR"/>
+        <xs:enumeration value="CS"/>
+        <xs:enumeration value="DA"/>
+        <xs:enumeration value="NL"/>
+        <xs:enumeration value="EN"/>
+        <xs:enumeration value="FI"/>
+        <xs:enumeration value="FR"/>
+        <xs:enumeration value="DE"/>
+        <xs:enumeration value="HU"/>
+        <xs:enumeration value="IT"/>
+        <xs:enumeration value="LT"/>
+        <xs:enumeration value="NO"/>
+        <xs:enumeration value="PL"/>
+        <xs:enumeration value="PT"/>
+        <xs:enumeration value="RO"/>
+        <xs:enumeration value="RU"/>
+        <xs:enumeration value="SK"/>
+        <xs:enumeration value="ES"/>
+        <xs:enumeration value="SV"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Currencies -->
+
+<xs:simpleType name="currencies">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="AUD"/>
+        <xs:enumeration value="BGN"/>
+        <xs:enumeration value="BRL"/>
+        <xs:enumeration value="CAD"/>
+        <xs:enumeration value="CHF"/>
+        <xs:enumeration value="CLP"/>
+        <xs:enumeration value="CNH"/>
+        <xs:enumeration value="CNY"/>
+        <xs:enumeration value="CZK"/>
+        <xs:enumeration value="DKK"/>
+        <xs:enumeration value="EUR"/>
+        <xs:enumeration value="GBP"/>
+        <xs:enumeration value="HKD"/>
+        <xs:enumeration value="HRK"/>
+        <xs:enumeration value="HUF"/>
+        <xs:enumeration value="IDR"/>
+        <xs:enumeration value="ILS"/>
+        <xs:enumeration value="INR"/>
+        <xs:enumeration value="JPY"/>
+        <xs:enumeration value="KRD"/>
+        <xs:enumeration value="KRW"/>
+        <xs:enumeration value="MXN"/>
+        <xs:enumeration value="MYR"/>
+        <xs:enumeration value="NOK"/>
+        <xs:enumeration value="NZD"/>
+        <xs:enumeration value="PLN"/>
+        <xs:enumeration value="RON"/>
+        <xs:enumeration value="RUB"/>
+        <xs:enumeration value="SEK"/>
+        <xs:enumeration value="SGD"/>
+        <xs:enumeration value="THB"/>
+        <xs:enumeration value="TRY"/>
+        <xs:enumeration value="TWD"/>
+        <xs:enumeration value="UAH"/>
+        <xs:enumeration value="USD"/>
+        <xs:enumeration value="ZAR"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- changeLog -->
+<xs:complexType name="changeLogmifid2">
+    <xs:sequence>
+        <xs:element name="updateTriggers" minOccurs="1" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element type="mifid2UpdateTriggers" name="updateTrigger" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Reasons for MiFID 2 update -->
+
+<xs:simpleType name="mifid2UpdateTriggers">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="internalGovernanceReview"/>
+        <xs:enumeration value="other"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<!-- PRIIP category -->
+
+<xs:simpleType name="priipCategories">
+    <xs:restriction base="xs:integer">
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="2"/>
+        <xs:enumeration value="3"/>
+        <xs:enumeration value="4"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- SRI classes -->
+
+<xs:simpleType name="sriClasses">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="2"/>
+        <xs:enumeration value="3"/>
+        <xs:enumeration value="4"/>
+        <xs:enumeration value="5"/>
+        <xs:enumeration value="6"/>
+        <xs:enumeration value="7"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- MRM classes -->
+
+<xs:simpleType name="mrmClasses">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="2"/>
+        <xs:enumeration value="3"/>
+        <xs:enumeration value="4"/>
+        <xs:enumeration value="5"/>
+        <xs:enumeration value="6"/>
+        <xs:enumeration value="7"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<!-- SRI classes Spanish-->
+
+<xs:simpleType name="sriClassesSpanish">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="2"/>
+        <xs:enumeration value="3"/>
+        <xs:enumeration value="4"/>
+        <xs:enumeration value="5"/>
+        <xs:enumeration value="6"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<!-- Product Types-->
+
+<xs:simpleType name="productTypes">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="SP"/>
+        <xs:enumeration value="OTC"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Product Sources-->
+
+<xs:simpleType name="productSources">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="PRIIPCloud"/>
+        <xs:enumeration value="3rd Party"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="changeLog">
+    <xs:sequence>
+        <xs:element name="updateTriggers" minOccurs="1" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element type="kidUpdateTriggersLevel1" name="updateTriggerLevel1" minOccurs="1" maxOccurs="1"/>
+                    <xs:element type="kidUpdateTriggersLevel2" name="updateTriggerLevel2" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+
+<!-- Exercise styles -->
+
+<xs:simpleType name="exerciseStyles">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="american"/>
+        <xs:enumeration value="bermudan"/>
+        <xs:enumeration value="european"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Accrual quotation types -->
+
+<xs:simpleType name="accrualQuotationTypes">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="clean"/>
+        <xs:enumeration value="dirty"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Notation types -->
+
+<xs:simpleType name="notationTypes">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="notionalAmount"/>
+        <xs:enumeration value="multiplier"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Security types -->
+
+<xs:simpleType name="securityTypes">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="note"/>
+        <xs:enumeration value="certificate"/>
+        <xs:enumeration value="warrant"/>
+        <xs:enumeration value="coveredBond"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Wrapper types -->
+
+<xs:simpleType name="wrapperTypes">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="EIS"/>
+
+        <!-- To be expanded -->
+
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- EUSIPA (securitized) product types -->
+
+<xs:simpleType name="eusipaProductTypes">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="1100"/>
+        <xs:enumeration value="1110"/>
+        <xs:enumeration value="1120"/>
+        <xs:enumeration value="1130"/>
+        <xs:enumeration value="1140"/>
+        <xs:enumeration value="1199"/>
+        <xs:enumeration value="1200"/>
+        <xs:enumeration value="1210"/>
+        <xs:enumeration value="1220"/>
+        <xs:enumeration value="1230"/>
+        <xs:enumeration value="1240"/>
+        <xs:enumeration value="1250"/>
+        <xs:enumeration value="1260"/>
+        <xs:enumeration value="1299"/>
+        <xs:enumeration value="1300"/>
+        <xs:enumeration value="1310"/>
+        <xs:enumeration value="1320"/>
+        <xs:enumeration value="1330"/>
+        <xs:enumeration value="1340"/>
+        <xs:enumeration value="1399"/>
+        <xs:enumeration value="2100"/>
+        <xs:enumeration value="2110"/>
+        <xs:enumeration value="2199"/>  
+        <xs:enumeration value="other"/> 
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- UCITS transaction costs calculation methods -->
+
+<xs:simpleType name="ucitsTransactionCostsCalculationMethods">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="2"/>
+        <xs:enumeration value="3"/>
+        <xs:enumeration value="4"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+
+<!-- SRRI classes -->
+
+<xs:simpleType name="srriClasses">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="2"/>
+        <xs:enumeration value="3"/>
+        <xs:enumeration value="4"/>
+        <xs:enumeration value="5"/>
+        <xs:enumeration value="6"/>
+        <xs:enumeration value="7"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- MICs -->
+
+<xs:complexType name="MICs">
+	<xs:sequence>
+		<xs:element type ="MIC" name="MIC" minOccurs = "0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name= "MIC">
+	<xs:restriction base="xs:string">
+		<xs:maxLength value = "4"/>
+	</xs:restriction>
+</xs:simpleType>
+
+</xs:schema>
